@@ -133,8 +133,8 @@ class HallucinationGradientTracer:
         self._register_hooks()
 
         self.model.eval()
-        embeddings = self._get_embeddings(input_ids)
-        embeddings.requires_grad_(True)
+        # Detach so the embedding is a leaf tensor — only then does .grad populate
+        embeddings = self._get_embeddings(input_ids).detach().requires_grad_(True)
 
         logits = self._forward_with_embeddings(embeddings, input_ids)
 
@@ -206,22 +206,22 @@ class HallucinationGradientTracer:
         embeddings: torch.Tensor,
     ) -> torch.Tensor:
         """Return shape (seq_len,) gradient norm per token position."""
+        seq_len = embeddings.size(1)
         if embeddings.grad is not None:
-            norms = embeddings.grad.norm(dim=-1).squeeze(0)  # (seq_len,)
-        else:
-            # Fallback: use stored attention gradients
-            if self._gradient_store.gradients:
+            norms = embeddings.grad.norm(dim=-1).reshape(seq_len)
+        elif self._gradient_store.gradients:
+            valid = [g for g in self._gradient_store.gradients if g.dim() >= 2]
+            if valid:
                 stacked = torch.stack(
-                    [g.norm(dim=-1).squeeze(0).mean(0)
-                     for g in self._gradient_store.gradients
-                     if g.dim() >= 2],
-                    dim=0,
+                    [g.norm(dim=-1).reshape(-1)[:seq_len] for g in valid], dim=0
                 )
                 norms = stacked.mean(0)
             else:
-                seq_len = embeddings.size(1)
                 norms = torch.ones(seq_len, device=self.device)
+        else:
+            norms = torch.ones(seq_len, device=self.device)
 
+        norms = norms.flatten()
         # Normalise to [0, 1]
         norms = (norms - norms.min()) / (norms.max() - norms.min() + 1e-9)
         return norms
@@ -241,9 +241,9 @@ class HallucinationGradientTracer:
         tokens = self.tokenizer.convert_ids_to_tokens(
             input_ids.squeeze(0).tolist()
         )
-        scores = token_scores.detach().cpu()
+        scores = token_scores.detach().cpu().flatten()  # guarantee 1-d
 
-        boundary_mask = scores < self.threshold
+        boundary_mask = (scores < self.threshold).tolist()
         boundary_tokens = [t for t, m in zip(tokens, boundary_mask) if m]
 
         knowledge_gaps = []

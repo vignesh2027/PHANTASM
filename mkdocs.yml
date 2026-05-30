@@ -54,6 +54,7 @@ nav:
     - Educational Tech: case_studies/edtech.md
   - API Reference: api.md
   - FAQ: faq.md
+  - Research Paper: paper.md
 
 markdown_extensions:
   - pymdownx.highlight:
