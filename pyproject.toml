@@ -1,0 +1,98 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.backends.legacy:build"
+
+[project]
+name = "phantasm-llm"
+version = "1.0.0"
+description = "PHANTASM: Invert LLM hallucination, confabulation, and uncertainty into productive features."
+readme = "README.md"
+license = { text = "Apache-2.0" }
+authors = [{ name = "Vignesh S", email = "applemacbook6sep2004@gmail.com" }]
+maintainers = [{ name = "Vignesh S", email = "applemacbook6sep2004@gmail.com" }]
+keywords = [
+    "hallucination",
+    "llm",
+    "uncertainty",
+    "confabulation",
+    "calibration",
+    "pytorch",
+    "transformers",
+    "nlp",
+    "machine-learning",
+    "ai-safety",
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Science/Research",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: Apache Software License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+]
+requires-python = ">=3.9"
+dependencies = [
+    "torch>=2.0.0",
+    "transformers>=4.35.0",
+    "numpy>=1.24.0",
+    "scipy>=1.10.0",
+    "datasets>=2.14.0",
+    "huggingface-hub>=0.17.0",
+    "tqdm>=4.65.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.4.0",
+    "pytest-cov>=4.1.0",
+    "black>=23.9.0",
+    "isort>=5.12.0",
+    "flake8>=6.1.0",
+    "mypy>=1.6.0",
+]
+viz = [
+    "matplotlib>=3.7.0",
+    "seaborn>=0.12.0",
+    "plotly>=5.17.0",
+]
+docs = [
+    "mkdocs>=1.5.0",
+    "mkdocs-material>=9.4.0",
+    "mkdocstrings[python]>=0.23.0",
+]
+all = ["phantasm-llm[dev,viz,docs]"]
+
+[project.urls]
+Homepage = "https://vignesh2027.github.io/PHANTASM"
+Repository = "https://github.com/vignesh2027/PHANTASM"
+Documentation = "https://vignesh2027.github.io/PHANTASM"
+"Bug Tracker" = "https://github.com/vignesh2027/PHANTASM/issues"
+
+[project.scripts]
+phantasm = "phantasm.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["phantasm*"]
+
+[tool.black]
+line-length = 100
+target-version = ["py39", "py310", "py311"]
+
+[tool.isort]
+profile = "black"
+line_length = 100
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-v --tb=short"
+
+[tool.mypy]
+python_version = "3.10"
+warn_return_any = true
+ignore_missing_imports = true

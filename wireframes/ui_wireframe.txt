@@ -1,0 +1,83 @@
+╔══════════════════════════════════════════════════════════════════════════════╗
+║                         PHANTASM  —  Web UI  Wireframe                      ║
+╠══════════════════════════════════════════════════════════════════════════════╣
+║  PHANTASM                                    [Docs] [GitHub] [PyPI]  [▶ Run]║
+╠══════════════════════════════════════════════════════════════════════════════╣
+║                                                                              ║
+║  ┌─────────────────────────────────────────────────────────────────────┐    ║
+║  │  Input Text                                                         │    ║
+║  │  The Eiffel Tower was constructed in 1492 by Napoleon Bonaparte...  │    ║
+║  │                                                                     │    ║
+║  └─────────────────────────────────────────────────────────────────────┘    ║
+║                                                                              ║
+║  ┌──────────────────────────────────────┐  ┌──────────────────────────────┐ ║
+║  │  Reference Text (optional)           │  │  Settings                    │ ║
+║  │  The Eiffel Tower was built in 1889  │  │  Model:   [gpt2 ▾]          │ ║
+║  │  by Gustave Eiffel...               │  │  Domain:  [General ▾]        │ ║
+║  └──────────────────────────────────────┘  │  HGT θ:   [0.35 ────●───]  │ ║
+║                                            │  MC N:    [  20 ────●───]  │ ║
+║                                            │  Coverage:[0.90 ────●───]  │ ║
+║                                            └──────────────────────────────┘ ║
+║                                                                              ║
+║  [  ▶  ANALYSE  ]                                         ← one click       ║
+║                                                                              ║
+╠══════════════════════════════════════════════════════════════════════════════╣
+║  RESULTS                                                                     ║
+╠════════════════╦═════════════════════════╦════════════════════════════════════╣
+║  ◈ PILLAR I    ║  ◈ PILLAR II            ║  ◈ PILLAR III                    ║
+║  HGT           ║  CMN                    ║  UC                              ║
+║                ║                         ║                                  ║
+║  Risk:  72%    ║  3 hypotheses mined     ║  Tier: ≈ FLUID                  ║
+║  ▓▓▓▓▓▓▓░░░░  ║                         ║                                  ║
+║                ║  [1] nov=0.71 pla=0.68  ║  Raw conf:    89%               ║
+║  Token map:    ║  "Iron lattice..."      ║  Calibrated:  43%  ◄────         ║
+║                ║                         ║  Epistemic:  0.21               ║
+║  The    ████   ║  [2] nov=0.63 pla=0.72  ║  CI [90%]: (0.28, 0.58)        ║
+║  Eiffel ████   ║  "Military use..."      ║                                  ║
+║  Tower  ████   ║                         ║  ┌──────────────────────────┐   ║
+║  was    ███    ║  [3] nov=0.58 pla=0.61  ║  │  ◆ Crystal  ████  72%   │   ║
+║  built  ████   ║  "Conquest symbol..."   ║  │  ◇ Solid    ██    18%   │   ║
+║  in     ██     ║                         ║  │  ≈ Fluid    █      7%   │   ║
+║  1492   ░░░░   ║  [Export hypotheses]    ║  │  ~ Vapor    ░      3%   │   ║
+║  by     ██     ║                         ║  └──────────────────────────┘   ║
+║  Napoleon░░░░  ║                         ║                                  ║
+║                ║                         ║  [View calibration curve]       ║
+╠════════════════╩═════════════════════════╩════════════════════════════════════╣
+║  ◈ ACTIONABLE INSIGHTS                                                       ║
+║  • HIGH hallucination risk (72%): Use '1492', 'Napoleon' as RAG queries.    ║
+║  • Top hypothesis: 'Iron lattice construction may predate known patents'     ║
+║  • Reliability: FLUID — verify with secondary source before use.            ║
+║  • Collect 2 boundary-token examples to reduce future hallucination.        ║
+╠══════════════════════════════════════════════════════════════════════════════╣
+║  [Export JSON]  [Export CSV]  [Copy Report]  [Share Link]  [Open in Colab] ║
+╚══════════════════════════════════════════════════════════════════════════════╝
+
+
+MOBILE WIREFRAME (375px)
+════════════════════════
+
+┌──────────────────────────┐
+│ PHANTASM          ≡ Menu │
+├──────────────────────────┤
+│ Input text:              │
+│ ┌──────────────────────┐ │
+│ │ The Eiffel Tower...  │ │
+│ └──────────────────────┘ │
+│ [    ANALYSE    ]        │
+├──────────────────────────┤
+│ ◈ PILLAR I — HGT        │
+│ Risk: 72%  ▓▓▓▓▓░░░     │
+│ Gaps: 1492, Napoleon    │
+├──────────────────────────┤
+│ ◈ PILLAR II — CMN       │
+│ 3 hypotheses mined      │
+│ [View all →]            │
+├──────────────────────────┤
+│ ◈ PILLAR III — UC       │
+│ Tier: ≈ FLUID           │
+│ Conf: 43% (CI 28-58%)   │
+├──────────────────────────┤
+│ INSIGHTS                │
+│ • Use '1492' for RAG    │
+│ • Verify before use     │
+└──────────────────────────┘
