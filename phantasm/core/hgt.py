@@ -193,7 +193,7 @@ class HallucinationGradientTracer:
     def _register_hooks(self) -> None:
         for name, module in self.model.named_modules():
             if any(k in name for k in ("attn", "attention", "self_attn")):
-                h = module.register_backward_hook(self._gradient_store.hook)
+                h = module.register_full_backward_hook(self._gradient_store.hook)
                 self._hooks.append(h)
 
     def _remove_hooks(self) -> None:

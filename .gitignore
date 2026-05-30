@@ -22,3 +22,8 @@ checkpoints_cmn/
 training_history.json
 cmn_history.json
 .DS_Store
+*.docx
+dist/
+site/
+.coverage
+*.egg-info/

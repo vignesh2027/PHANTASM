@@ -5,7 +5,7 @@ Produces ASCII and Matplotlib visualizations of all three pillars.
 
 from __future__ import annotations
 
-from typing import Any, Dict, List, Optional
+from typing import Any, List, Optional
 
 import numpy as np
 
@@ -45,7 +45,7 @@ class PHANTASMVisualizer:
         print("═" * 65)
 
         # HGT section
-        print(f"\n  ◈ PILLAR I — Hallucination Gradient Tracing")
+        print("\n  ◈ PILLAR I — Hallucination Gradient Tracing")
         print(f"  ├─ Overall risk   : {atlas.overall_hallucination_risk:.2%}")
         bar_len = int(atlas.overall_hallucination_risk * 40)
         bar = "█" * bar_len + "░" * (40 - bar_len)
@@ -56,14 +56,14 @@ class PHANTASMVisualizer:
                   f"(conf={atlas.knowledge_gaps[0]['confidence']:.3f})")
 
         # CMN section
-        print(f"\n  ◈ PILLAR II — Confabulation Mining Network")
+        print("\n  ◈ PILLAR II — Confabulation Mining Network")
         print(f"  └─ Hypotheses mined: {len(report.mined_hypotheses)}")
         for i, h in enumerate(report.mined_hypotheses[:3]):
             print(f"     [{i+1}] novelty={h.novelty_score:.2f} pla={h.plausibility_score:.2f}"
                   f"  '{h.text[:60]}...'")
 
         # UC section
-        print(f"\n  ◈ PILLAR III — Uncertainty Crystallization")
+        print("\n  ◈ PILLAR III — Uncertainty Crystallization")
         print(f"  ├─ Raw confidence     : {uc.raw_confidence:.2%}")
         print(f"  ├─ Calibrated conf.   : {uc.calibrated_confidence:.2%}")
         print(f"  ├─ Epistemic uncert.  : {uc.epistemic_uncertainty:.4f}")
@@ -73,9 +73,9 @@ class PHANTASMVisualizer:
         print(f"  └─ Recommendation     : {uc.action_recommendation}")
 
         # Synthesis
-        print(f"\n  ◈ SYNTHESIS")
+        print("\n  ◈ SYNTHESIS")
         print(f"  {report.synthesis_summary}")
-        print(f"\n  ◈ ACTIONABLE INSIGHTS")
+        print("\n  ◈ ACTIONABLE INSIGHTS")
         for insight in report.actionable_insights:
             print(f"  • {insight}")
 
@@ -110,7 +110,6 @@ class PHANTASMVisualizer:
         """Reliability diagram (requires matplotlib)."""
         try:
             import matplotlib.pyplot as plt
-            import matplotlib.patches as mpatches
         except ImportError:
             print("matplotlib not installed — run: pip install matplotlib")
             return

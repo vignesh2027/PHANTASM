@@ -7,7 +7,7 @@ from __future__ import annotations
 import json
 import os
 import time
-from dataclasses import dataclass, field
+from dataclasses import dataclass
 from typing import Any, Callable, Dict, List, Optional
 
 import torch
@@ -17,7 +17,6 @@ from torch.optim.lr_scheduler import CosineAnnealingLR
 from torch.utils.data import DataLoader
 
 from phantasm.training.losses import PHANTASMLoss
-from phantasm.training.metrics import PHANTASMMetrics
 
 
 @dataclass

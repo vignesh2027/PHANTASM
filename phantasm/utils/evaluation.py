@@ -4,7 +4,7 @@ PHANTASMEvaluator — End-to-end evaluation suite.
 
 from __future__ import annotations
 
-from typing import Any, Dict, List, Optional
+from typing import Any, Dict, List
 
 from phantasm.training.metrics import PHANTASMMetrics
 
@@ -95,7 +95,7 @@ class PHANTASMEvaluator:
 
         if "hgt" in metrics:
             h = metrics["hgt"]
-            print(f"\n  HGT (Hallucination Detection)")
+            print("\n  HGT (Hallucination Detection)")
             print(f"  ├─ AUROC     : {h.get('auroc', 'N/A')}")
             print(f"  ├─ F1        : {h.get('f1', 'N/A')}")
             print(f"  ├─ Precision : {h.get('precision', 'N/A')}")
@@ -103,13 +103,13 @@ class PHANTASMEvaluator:
 
         if "cmn" in metrics:
             c = metrics["cmn"]
-            print(f"\n  CMN (Hypothesis Mining)")
+            print("\n  CMN (Hypothesis Mining)")
             for k, v in c.items():
                 print(f"  └─ {k}: {v}")
 
         if "uc" in metrics:
             u = metrics["uc"]
-            print(f"\n  UC (Uncertainty Calibration)")
+            print("\n  UC (Uncertainty Calibration)")
             print(f"  ├─ ECE  : {u.get('ece', 'N/A')}")
             print(f"  ├─ MCE  : {u.get('mce', 'N/A')}")
             print(f"  └─ Acc  : {u.get('mean_accuracy', 'N/A')}")

@@ -1,7 +1,6 @@
 """Tests for Hallucination Gradient Tracing (HGT)."""
 
 import pytest
-import torch
 from transformers import AutoModelForCausalLM, AutoTokenizer
 
 from phantasm.core.hgt import HallucinationGradientTracer, score_hallucination_risk, CompetencyAtlas

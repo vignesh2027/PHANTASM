@@ -26,7 +26,6 @@ import torch.nn.functional as F
 from dataclasses import dataclass, field
 from typing import Dict, List, Optional, Tuple
 import numpy as np
-from scipy import stats as scipy_stats
 
 
 @dataclass

@@ -4,7 +4,7 @@ PHANTASM evaluation metrics for all three pillars.
 
 from __future__ import annotations
 
-from typing import Dict, List, Optional, Tuple
+from typing import Dict, List
 import numpy as np
 
 
@@ -75,8 +75,8 @@ class PHANTASMMetrics:
             coverage.append(min(len(hyp_scores) / k, 1.0))
 
         return {
-            f"novelty@{k}": round(float(np.mean(novelty_at_k)), 4),
-            f"coverage@{k}": round(float(np.mean(coverage)), 4),
+            f"novelty@{k}": round(float(np.mean(novelty_at_k)) if novelty_at_k else 0.0, 4),
+            f"coverage@{k}": round(float(np.mean(coverage)) if coverage else 0.0, 4),
         }
 
     @staticmethod
@@ -130,7 +130,6 @@ class PHANTASMMetrics:
 
         tp = fp = 0
         auc = 0.0
-        prev_fp = 0
 
         for _, label in pairs:
             if label >= 0.5:
