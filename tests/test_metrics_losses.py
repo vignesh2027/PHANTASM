@@ -216,7 +216,8 @@ def test_phantasm_loss_partial_batch_cmn_only():
 
 
 def test_phantasm_loss_total_equals_sum():
-    loss_fn = PHANTASMLoss(hgt_weight=1.0, cmn_weight=1.0)
+    # alpha=1, beta=1, gamma=0 → total = 1*hgt + 1*cmn + 0*uc = hgt + cmn
+    loss_fn = PHANTASMLoss(alpha=1.0, beta=1.0, gamma=0.0)
     batch = {
         "token_scores": torch.rand(4),
         "hgt_labels": torch.randint(0, 2, (4,)).float(),
@@ -230,12 +231,13 @@ def test_phantasm_loss_total_equals_sum():
 
 
 def test_phantasm_loss_weights_scale_total():
+    # Higher alpha → larger hgt contribution → larger total (with hgt > 0)
     batch = {
         "token_scores": torch.rand(4),
         "hgt_labels": torch.randint(0, 2, (4,)).float(),
     }
-    losses_1x = PHANTASMLoss(hgt_weight=1.0)(batch)
-    losses_2x = PHANTASMLoss(hgt_weight=2.0)(batch)
+    losses_1x = PHANTASMLoss(alpha=0.4)(batch)
+    losses_2x = PHANTASMLoss(alpha=0.8)(batch)
     assert losses_2x["total"].item() >= losses_1x["total"].item() - 1e-6
 
 
