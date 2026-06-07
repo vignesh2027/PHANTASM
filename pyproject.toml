@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "phantasm-llm"
-version = "1.0.0"
+version = "1.1.0"
 description = "PHANTASM: Invert LLM hallucination, confabulation, and uncertainty into productive features."
 readme = "README.md"
 license = { text = "Apache-2.0" }
@@ -21,9 +21,19 @@ keywords = [
     "nlp",
     "machine-learning",
     "ai-safety",
+    "hallucination-detection",
+    "knowledge-boundary",
+    "hypothesis-generation",
+    "uncertainty-quantification",
+    "conformal-prediction",
+    "mc-dropout",
+    "gradient-tracing",
+    "large-language-models",
+    "responsible-ai",
+    "scientific-discovery",
 ]
 classifiers = [
-    "Development Status :: 4 - Beta",
+    "Development Status :: 5 - Production/Stable",
     "Intended Audience :: Science/Research",
     "Intended Audience :: Developers",
     "License :: OSI Approved :: Apache Software License",

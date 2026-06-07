@@ -8,7 +8,7 @@ Author: Vignesh S <applemacbook6sep2004@gmail.com>
 License: Apache 2.0
 """
 
-__version__ = "1.0.0"
+__version__ = "1.1.0"
 __author__ = "Vignesh S"
 __email__ = "applemacbook6sep2004@gmail.com"
 __license__ = "Apache-2.0"
