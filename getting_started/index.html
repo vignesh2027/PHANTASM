@@ -25,7 +25,7 @@
       
       
       <link rel="icon" href="../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
     
     
       
@@ -33,7 +33,7 @@
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.ec1eaa64.min.css">
       
         
         <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
@@ -1324,28 +1324,28 @@
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>pip<span class="w"> </span>install<span class="w"> </span>phantasm-llm
 </code></pre></div>
 <p>For visualization support:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>pip<span class="w"> </span>install<span class="w"> </span><span class="s2">&quot;phantasm-llm[viz]&quot;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>pip<span class="w"> </span>install<span class="w"> </span><span class="s2">"phantasm-llm[viz]"</span>
 </code></pre></div>
 <p>Full development install:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/vignesh2027/PHANTASM.git
 <a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="nb">cd</span><span class="w"> </span>PHANTASM
-<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>pip<span class="w"> </span>install<span class="w"> </span>-e<span class="w"> </span><span class="s2">&quot;.[all]&quot;</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>pip<span class="w"> </span>install<span class="w"> </span>-e<span class="w"> </span><span class="s2">".[all]"</span>
 </code></pre></div>
 <h2 id="your-first-analysis">Your first analysis<a class="headerlink" href="#your-first-analysis" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">phantasm</span><span class="w"> </span><span class="kn">import</span> <span class="n">PHANTASMPipeline</span>
 <a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>
 <a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="c1"># Load any HuggingFace causal LM</span>
-<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="n">pipeline</span> <span class="o">=</span> <span class="n">PHANTASMPipeline</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="s2">&quot;gpt2&quot;</span><span class="p">)</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="n">pipeline</span> <span class="o">=</span> <span class="n">PHANTASMPipeline</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="s2">"gpt2"</span><span class="p">)</span>
 <a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>
 <a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="c1"># Analyse text — no reference needed</span>
-<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="n">report</span> <span class="o">=</span> <span class="n">pipeline</span><span class="o">.</span><span class="n">analyze</span><span class="p">(</span><span class="s2">&quot;The Eiffel Tower was built in 1492 by Napoleon.&quot;</span><span class="p">)</span>
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="n">report</span> <span class="o">=</span> <span class="n">pipeline</span><span class="o">.</span><span class="n">analyze</span><span class="p">(</span><span class="s2">"The Eiffel Tower was built in 1492 by Napoleon."</span><span class="p">)</span>
 <a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="nb">print</span><span class="p">(</span><span class="n">report</span><span class="p">)</span>
 </code></pre></div>
 <h2 id="with-a-reference-text">With a reference text<a class="headerlink" href="#with-a-reference-text" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="n">report</span> <span class="o">=</span> <span class="n">pipeline</span><span class="o">.</span><span class="n">analyze</span><span class="p">(</span>
-<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>    <span class="s2">&quot;The Amazon River flows through Africa.&quot;</span><span class="p">,</span>
-<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>    <span class="n">reference_text</span><span class="o">=</span><span class="s2">&quot;The Amazon River flows through South America.&quot;</span><span class="p">,</span>
-<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>    <span class="n">domain</span><span class="o">=</span><span class="s2">&quot;geography&quot;</span><span class="p">,</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>    <span class="s2">"The Amazon River flows through Africa."</span><span class="p">,</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>    <span class="n">reference_text</span><span class="o">=</span><span class="s2">"The Amazon River flows through South America."</span><span class="p">,</span>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>    <span class="n">domain</span><span class="o">=</span><span class="s2">"geography"</span><span class="p">,</span>
 <a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="p">)</span>
 </code></pre></div>
 <h2 id="reading-the-report">Reading the report<a class="headerlink" href="#reading-the-report" title="Permanent link">&para;</a></h2>
@@ -1354,7 +1354,7 @@
 <a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>
 <a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="c1"># Specific knowledge gaps</span>
 <a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="k">for</span> <span class="n">gap</span> <span class="ow">in</span> <span class="n">report</span><span class="o">.</span><span class="n">competency_atlas</span><span class="o">.</span><span class="n">knowledge_gaps</span><span class="p">:</span>
-<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>    <span class="nb">print</span><span class="p">(</span><span class="n">gap</span><span class="p">[</span><span class="s2">&quot;span&quot;</span><span class="p">],</span> <span class="n">gap</span><span class="p">[</span><span class="s2">&quot;confidence&quot;</span><span class="p">],</span> <span class="n">gap</span><span class="p">[</span><span class="s2">&quot;severity&quot;</span><span class="p">])</span>
+<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>    <span class="nb">print</span><span class="p">(</span><span class="n">gap</span><span class="p">[</span><span class="s2">"span"</span><span class="p">],</span> <span class="n">gap</span><span class="p">[</span><span class="s2">"confidence"</span><span class="p">],</span> <span class="n">gap</span><span class="p">[</span><span class="s2">"severity"</span><span class="p">])</span>
 <a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a>
 <a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="c1"># Mined hypotheses</span>
 <a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a><span class="k">for</span> <span class="n">h</span> <span class="ow">in</span> <span class="n">report</span><span class="o">.</span><span class="n">mined_hypotheses</span><span class="p">:</span>
@@ -1362,14 +1362,14 @@
 <a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a>
 <a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a><span class="c1"># Calibrated confidence + tier</span>
 <a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a><span class="n">uc</span> <span class="o">=</span> <span class="n">report</span><span class="o">.</span><span class="n">uncertainty</span>
-<a id="__codelineno-5-14" name="__codelineno-5-14" href="#__codelineno-5-14"></a><span class="nb">print</span><span class="p">(</span><span class="n">uc</span><span class="o">.</span><span class="n">reliability_tier</span><span class="p">)</span>        <span class="c1"># &quot;crystal&quot; | &quot;solid&quot; | &quot;fluid&quot; | &quot;vapor&quot;</span>
+<a id="__codelineno-5-14" name="__codelineno-5-14" href="#__codelineno-5-14"></a><span class="nb">print</span><span class="p">(</span><span class="n">uc</span><span class="o">.</span><span class="n">reliability_tier</span><span class="p">)</span>        <span class="c1"># "crystal" | "solid" | "fluid" | "vapor"</span>
 <a id="__codelineno-5-15" name="__codelineno-5-15" href="#__codelineno-5-15"></a><span class="nb">print</span><span class="p">(</span><span class="n">uc</span><span class="o">.</span><span class="n">calibrated_confidence</span><span class="p">)</span>   <span class="c1"># float in [0, 1]</span>
 <a id="__codelineno-5-16" name="__codelineno-5-16" href="#__codelineno-5-16"></a><span class="nb">print</span><span class="p">(</span><span class="n">uc</span><span class="o">.</span><span class="n">conformal_interval</span><span class="p">)</span>      <span class="c1"># (lower, upper) with 90% statistical guarantee</span>
 <a id="__codelineno-5-17" name="__codelineno-5-17" href="#__codelineno-5-17"></a>
 <a id="__codelineno-5-18" name="__codelineno-5-18" href="#__codelineno-5-18"></a><span class="c1"># Human-readable synthesis</span>
 <a id="__codelineno-5-19" name="__codelineno-5-19" href="#__codelineno-5-19"></a><span class="nb">print</span><span class="p">(</span><span class="n">report</span><span class="o">.</span><span class="n">synthesis_summary</span><span class="p">)</span>
 <a id="__codelineno-5-20" name="__codelineno-5-20" href="#__codelineno-5-20"></a><span class="k">for</span> <span class="n">insight</span> <span class="ow">in</span> <span class="n">report</span><span class="o">.</span><span class="n">actionable_insights</span><span class="p">:</span>
-<a id="__codelineno-5-21" name="__codelineno-5-21" href="#__codelineno-5-21"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;•&quot;</span><span class="p">,</span> <span class="n">insight</span><span class="p">)</span>
+<a id="__codelineno-5-21" name="__codelineno-5-21" href="#__codelineno-5-21"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">"•"</span><span class="p">,</span> <span class="n">insight</span><span class="p">)</span>
 <a id="__codelineno-5-22" name="__codelineno-5-22" href="#__codelineno-5-22"></a>
 <a id="__codelineno-5-23" name="__codelineno-5-23" href="#__codelineno-5-23"></a><span class="c1"># Export as dict (for APIs, databases, logging)</span>
 <a id="__codelineno-5-24" name="__codelineno-5-24" href="#__codelineno-5-24"></a><span class="n">data</span> <span class="o">=</span> <span class="n">report</span><span class="o">.</span><span class="n">to_dict</span><span class="p">()</span>
@@ -1381,10 +1381,10 @@
 <a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="n">PHANTASMVisualizer</span><span class="o">.</span><span class="n">print_report</span><span class="p">(</span><span class="n">report</span><span class="p">)</span>
 <a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>
 <a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="c1"># Matplotlib calibration curve (requires phantasm-llm[viz])</span>
-<a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a><span class="n">PHANTASMVisualizer</span><span class="o">.</span><span class="n">plot_calibration_curve</span><span class="p">(</span><span class="n">confidences</span><span class="p">,</span> <span class="n">accuracies</span><span class="p">,</span> <span class="n">save_path</span><span class="o">=</span><span class="s2">&quot;cal.png&quot;</span><span class="p">)</span>
+<a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a><span class="n">PHANTASMVisualizer</span><span class="o">.</span><span class="n">plot_calibration_curve</span><span class="p">(</span><span class="n">confidences</span><span class="p">,</span> <span class="n">accuracies</span><span class="p">,</span> <span class="n">save_path</span><span class="o">=</span><span class="s2">"cal.png"</span><span class="p">)</span>
 <a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a>
 <a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a><span class="c1"># Hypothesis scatter plot</span>
-<a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a><span class="n">PHANTASMVisualizer</span><span class="o">.</span><span class="n">plot_hypothesis_scatter</span><span class="p">(</span><span class="n">report</span><span class="o">.</span><span class="n">mined_hypotheses</span><span class="p">,</span> <span class="n">save_path</span><span class="o">=</span><span class="s2">&quot;hyp.png&quot;</span><span class="p">)</span>
+<a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a><span class="n">PHANTASMVisualizer</span><span class="o">.</span><span class="n">plot_hypothesis_scatter</span><span class="p">(</span><span class="n">report</span><span class="o">.</span><span class="n">mined_hypotheses</span><span class="p">,</span> <span class="n">save_path</span><span class="o">=</span><span class="s2">"hyp.png"</span><span class="p">)</span>
 </code></pre></div>
 <h2 id="using-individual-pillars">Using individual pillars<a class="headerlink" href="#using-individual-pillars" title="Permanent link">&para;</a></h2>
 <p>You can use HGT, CMN, and UC independently without the full pipeline:</p>
@@ -1491,7 +1491,7 @@
       <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "navigation.instant", "search.suggest", "search.highlight", "content.code.copy", "content.code.annotate"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
       
     
   </body>
